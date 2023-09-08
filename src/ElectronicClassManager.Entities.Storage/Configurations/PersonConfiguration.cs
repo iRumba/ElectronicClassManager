@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ElectronicClassManager.Entities.Storage;
+namespace ElectronicClassManager.Entities.Storage.Configurations;
 
 public class PersonConfiguration : IEntityTypeConfiguration<Person>
 {

@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Ecm",
+      "Group": "Servers",
+      "Host": "ecm.db",
+      "Port": 5432,
+      "MaintenanceDB": "ecm",
+      "Username": "sa",
+      "PassFile": "/pgadmin4",
+      "SSLMode": "prefer"
+    }
+  }
+}

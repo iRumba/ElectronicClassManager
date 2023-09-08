@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  ecm:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  ecm.db:
+    environment:
+      POSTGRES_DB: 'ecm'
+      POSTGRES_USER: 'sa'
+      POSTGRES_PASSWORD: 'Qwerty123'
+    ports:
+      - 6661:5432
+    volumes:
+      - postgresql_ecm:/var/lib/postgresql/database-postgres
+      - postgresql_ecm_data:/var/lib/postgresql/database-postgres/data
+
+  pgadmin:
+    ports:
+      - 5454:5454
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@mydomain.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+      - PGADMIN_LISTEN_PORT=5454
+      #- PGPASSFILE=/pgadmin4/.pgpass
+    volumes:
+      - ../../local/PgAdmin/servers.json:/pgadmin4/servers.json
+      - ../../local/PgAdmin/.pgpass:/pgadmin4/pgpass
+    user: 
+      root

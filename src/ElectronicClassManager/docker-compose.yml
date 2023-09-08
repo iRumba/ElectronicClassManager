@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  ecm:
+    image: ${DOCKER_REGISTRY-}ecm
+    container_name: ecm
+    build:
+      context: .
+      dockerfile: ElectronicClassManager/Dockerfile
+
+  ecm.db:
+    image: postgres:13.3
+    container_name: "ecm.db"
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4:7.6
+    container_name: pgadmin
+    restart: always
+    depends_on:
+      - ecm.db
+
+volumes:
+  postgresql_ecm:
+  postgresql_ecm_data:

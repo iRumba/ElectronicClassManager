@@ -10,5 +10,8 @@ public class PersonConfiguration : IEntityTypeConfiguration<Person>
     {
         builder.ToTable("Persons")
             .HasKey(x => x.Id);
+
+        builder.Property(x => x.Id).HasValueGenerator<IdGenerator>();
+        
     }
 }

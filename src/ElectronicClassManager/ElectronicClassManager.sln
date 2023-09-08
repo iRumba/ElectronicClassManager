@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicClassManager.Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicClassManager.Entities.Storage", "..\ElectronicClassManager.Entities.Storage\ElectronicClassManager.Entities.Storage.csproj", "{221B93F0-F4BB-4F5D-8829-FA3FFA92F7F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicClassManager.Db.Configuration", "..\ElectronicClassManager.Db.Configuration\ElectronicClassManager.Db.Configuration.csproj", "{6155B40B-6CB5-40D1-B9E6-ACC02597340B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicClassManager.Db.Configuration", "..\ElectronicClassManager.Db.Configuration\ElectronicClassManager.Db.Configuration.csproj", "{6155B40B-6CB5-40D1-B9E6-ACC02597340B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicClassManager.Services", "..\ElectronicClassManager.Services\ElectronicClassManager.Services.csproj", "{CE4380D9-9E1E-487C-B1B7-14E13CE96053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicClassManager.Services.Implementations", "..\ElectronicClassManager.Services.Implementations\ElectronicClassManager.Services.Implementations.csproj", "{EBA6DC99-4509-413F-996F-AE13B5A36F80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{6155B40B-6CB5-40D1-B9E6-ACC02597340B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6155B40B-6CB5-40D1-B9E6-ACC02597340B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6155B40B-6CB5-40D1-B9E6-ACC02597340B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4380D9-9E1E-487C-B1B7-14E13CE96053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4380D9-9E1E-487C-B1B7-14E13CE96053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4380D9-9E1E-487C-B1B7-14E13CE96053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4380D9-9E1E-487C-B1B7-14E13CE96053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA6DC99-4509-413F-996F-AE13B5A36F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA6DC99-4509-413F-996F-AE13B5A36F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA6DC99-4509-413F-996F-AE13B5A36F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA6DC99-4509-413F-996F-AE13B5A36F80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

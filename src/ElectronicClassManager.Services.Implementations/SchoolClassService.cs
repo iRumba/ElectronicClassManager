@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using ElectronicClassManager.Entities;
 using ElectronicClassManager.Entities.Storage;
-using ElectronicClassManager.Services.Dto;
+using ElectronicClassManager.Services.Dto.SchoolClass;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElectronicClassManager.Services.Implementations;

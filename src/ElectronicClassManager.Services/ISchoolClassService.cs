@@ -1,4 +1,4 @@
-﻿using ElectronicClassManager.Services.Dto;
+﻿using ElectronicClassManager.Services.Dto.SchoolClass;
 
 namespace ElectronicClassManager.Services;
 

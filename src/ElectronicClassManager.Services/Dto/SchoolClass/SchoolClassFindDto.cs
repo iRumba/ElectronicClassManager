@@ -1,4 +1,4 @@
-﻿namespace ElectronicClassManager.Services.Dto;
+﻿namespace ElectronicClassManager.Services.Dto.SchoolClass;
 
 public record SchoolClassFindDto
 {

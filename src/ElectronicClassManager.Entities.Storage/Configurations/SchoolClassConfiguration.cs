@@ -8,6 +8,8 @@ public class SchoolClassConfiguration : IEntityTypeConfiguration<SchoolClass>
     /// <inheritdoc />
     public void Configure(EntityTypeBuilder<SchoolClass> builder)
     {
+        builder.ToTable("SchoolClasses");
+
         builder.HasIndex(x => x.PseudoName).IsUnique();
     }
 }

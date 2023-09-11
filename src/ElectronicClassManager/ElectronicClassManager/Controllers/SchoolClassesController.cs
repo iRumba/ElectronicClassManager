@@ -1,5 +1,5 @@
 ﻿using ElectronicClassManager.Services;
-using ElectronicClassManager.Services.Dto;
+using ElectronicClassManager.Services.Dto.SchoolClass;
 using Microsoft.AspNetCore.Mvc;
 using SchoolClassCreateDto = ElectronicClassManager.Dto.SchoolClassCreateDto;
 
@@ -45,7 +45,7 @@ public class SchoolClassesController : ControllerBase
     {
         var pseudoName = await GeneratePseudoNameAsync(dto);
 
-        var sDto = new Services.Dto.SchoolClassCreateDto
+        var sDto = new Services.Dto.SchoolClass.SchoolClassCreateDto
         {
             PseudoName = pseudoName,
             Description = dto.Description,
@@ -61,7 +61,7 @@ public class SchoolClassesController : ControllerBase
     [HttpPut("{pseudoName}")]
     public async Task<IActionResult> Put(string pseudoName, [FromBody] Dto.SchoolClassUpdateDto dto)
     {
-        var sDto = new Services.Dto.SchoolClassUpdateDto
+        var sDto = new SchoolClassUpdateDto
         {
             Description = dto.Description
         };

@@ -9,6 +9,7 @@ public class PersonConfiguration : IEntityTypeConfiguration<Person>
     public void Configure(EntityTypeBuilder<Person> builder)
     {
         builder.ToTable("Persons")
+            .UseTptMappingStrategy()
             .HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasValueGenerator<IdGenerator>();

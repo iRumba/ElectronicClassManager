@@ -1,14 +1,15 @@
-﻿using ElectronicClassManager.Services.Dto.Student;
+﻿using ElectronicClassManager.Entities;
+using System.Linq.Expressions;
 
 namespace ElectronicClassManager.Services;
 
 public interface IStudentService
 {
-    public Task<StudentOutDto?> GetByIdAsync(Guid id);
-    public Task<StudentOutDto> CreateAsync(StudentCreateDto dto);
-    public Task<StudentOutDto?> UpdateByIdAsync(Guid id, StudentUpdateDto dto);
+    public Task<Student?> GetByIdAsync(Guid id);
+    public Task<Student> CreateAsync(Student dto);
+    public Task<Student> UpdateAsync(Student dto);
 
-    public Task<StudentOutDto[]> FindAsync(StudentFindDto dto);
+    public Task<Student[]> FindAsync(params Expression<Func<Student, bool>>[] filters);
 
-    public Task<StudentOutDto?> DeleteByIdAsync(Guid id);
+    public Task<Student?> DeleteByIdAsync(Guid id);
 }

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\ElectronicClassManager.Entities\ElectronicClassManager.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dto\Student\" />
-  </ItemGroup>
-
 </Project>

@@ -10,5 +10,6 @@ public class StudentsConfiguration : IEntityTypeConfiguration<Student>
     {
         builder.ToTable("Students");
 
+        builder.Navigation(x => x.SchoolClass).AutoInclude();
     }
 }

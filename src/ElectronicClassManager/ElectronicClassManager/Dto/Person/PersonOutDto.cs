@@ -1,6 +1,6 @@
 ﻿using ElectronicClassManager.Entities;
 
-namespace ElectronicClassManager.Services.Dto.Person;
+namespace ElectronicClassManager.Dto.Person;
 
 public record PersonOutDto : IdEntityOutDto
 {

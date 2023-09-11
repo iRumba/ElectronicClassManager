@@ -1,4 +1,4 @@
-﻿namespace ElectronicClassManager.Dto;
+﻿namespace ElectronicClassManager.Dto.SchoolClass;
 
 public record SchoolClassCreateDto
 {

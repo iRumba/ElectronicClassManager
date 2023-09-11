@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISchoolClassService, SchoolClassService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 var efConf = builder.Configuration.GetSection("DbConfig").Get<EfConfiguration>();
 

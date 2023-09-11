@@ -1,4 +1,4 @@
-﻿namespace ElectronicClassManager.Services.Dto;
+﻿namespace ElectronicClassManager.Dto;
 
 public record IdEntityOutDto
 {

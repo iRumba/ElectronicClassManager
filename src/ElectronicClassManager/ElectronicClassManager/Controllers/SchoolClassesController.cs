@@ -1,20 +1,23 @@
-﻿using ElectronicClassManager.Services;
-using ElectronicClassManager.Services.Dto.SchoolClass;
+﻿using System.Linq.Expressions;
+using ElectronicClassManager.Dto.SchoolClass;
+using ElectronicClassManager.Entities;
+using ElectronicClassManager.Services;
 using Microsoft.AspNetCore.Mvc;
-using SchoolClassCreateDto = ElectronicClassManager.Dto.SchoolClassCreateDto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ElectronicClassManager.Controllers;
-[Route("api/[controller]")]
+[Route("api/SchoolClasses")]
 [ApiController]
 public class SchoolClassesController : ControllerBase
 {
     private readonly ISchoolClassService _schoolClassService;
+    private readonly IStudentService _studentService;
 
-    public SchoolClassesController(ISchoolClassService schoolClassService)
+    public SchoolClassesController(ISchoolClassService schoolClassService, IStudentService studentService)
     {
         _schoolClassService = schoolClassService;
+        _studentService = studentService;
     }
     // GET: api/<SchoolClassesController>
     [HttpGet("{pseudoName}")]
@@ -28,45 +31,55 @@ public class SchoolClassesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Find(int? number, string? letter, int? startYear, string? description)
     {
-        var sDto = new SchoolClassFindDto
-        {
-            Description = description,
-            Number = number,
-            Letter = letter,
-            StartYear = startYear
-        };
+        var filters = new List<Expression<Func<SchoolClass, bool>>>();
 
-        return Ok(await _schoolClassService.FindAsync(sDto));
+        if (number is not null)
+            filters.Add(x => x.Number == number);
+
+        if (!string.IsNullOrWhiteSpace(letter))
+            filters.Add(x => x.Letter == letter);
+
+        if (startYear is not null)
+            filters.Add(x => x.StartYear == startYear);
+
+        if (!string.IsNullOrWhiteSpace(description))
+            filters.Add(x => x.Description!.Contains(description));
+
+        return Ok(await _schoolClassService.FindAsync(filters));
     }
 
     // POST api/<SchoolClassesController>
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Dto.SchoolClassCreateDto dto)
+    public async Task<IActionResult> Post([FromBody] SchoolClassCreateDto dto)
     {
         var pseudoName = await GeneratePseudoNameAsync(dto);
 
-        var sDto = new Services.Dto.SchoolClass.SchoolClassCreateDto
+        var entity = new SchoolClass
         {
             PseudoName = pseudoName,
-            Description = dto.Description,
             Letter = dto.Letter,
-            Number = dto.Number,
-            StartYear = dto.StartYear
+            StartYear = dto.StartYear,
+            Description = dto.Description,
+            Number = dto.Number
         };
 
-        return Ok(await _schoolClassService.CreateAsync(sDto));
+        return Ok(await _schoolClassService.CreateAsync(entity));
     }
 
     // PUT api/<SchoolClassesController>/5
     [HttpPut("{pseudoName}")]
-    public async Task<IActionResult> Put(string pseudoName, [FromBody] Dto.SchoolClassUpdateDto dto)
+    public async Task<IActionResult> Put(string pseudoName, [FromBody] SchoolClassUpdateDto dto)
     {
-        var sDto = new SchoolClassUpdateDto
-        {
-            Description = dto.Description
-        };
+        var entity = await _schoolClassService.GetByPseudoNameAsync(pseudoName);
 
-        return Ok(await _schoolClassService.UpdateByPseudoNameAsync(pseudoName, sDto));
+        if (entity is null)
+        {
+            return NotFound();
+        }
+
+        entity.Description = dto.Description;
+
+        return Ok(await _schoolClassService.UpdateAsync(entity));
     }
 
     // DELETE api/<SchoolClassesController>/5
